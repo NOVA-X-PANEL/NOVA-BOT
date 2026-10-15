@@ -1,33 +1,21 @@
 <div align="center">
 
-# 🤖 Mirza Bot
+# 🤖 NOVA BOT
 
-### A powerful Telegram bot for selling VPN services — with fully automated config creation.
-
-<p>
-  <a href="https://t.me/mirzapanel">
-    <img src="https://img.shields.io/badge/Telegram-Channel-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white" alt="Telegram Channel"/>
-  </a>
-  <a href="https://t.me/mirzapanelgroup">
-    <img src="https://img.shields.io/badge/Telegram-Group-229ED9?style=for-the-badge&logo=telegram&logoColor=white" alt="Telegram Group"/>
-  </a>
-  <a href="https://mirzabot.com/docs/">
-    <img src="https://img.shields.io/badge/Docs-mirzabot.com-38BDF8?style=for-the-badge&logo=readthedocs&logoColor=white" alt="Documentation"/>
-  </a>
-</p>
+### ربات تلگرام اختصاصی فروش و مدیریت هوشمند اشتراک و سرویس‌های NOVA-X-PANEL
 
 <p>
-  <a href="https://github.com/NOVA-X-PANEL/mirzabot/stargazers">
-    <img src="https://img.shields.io/github/stars/NOVA-X-PANEL/mirzabot?style=flat-square&color=f5c518" alt="Stars"/>
+  <a href="https://github.com/NOVA-X-PANEL/NOVA-BOT/stargazers">
+    <img src="https://img.shields.io/github/stars/NOVA-X-PANEL/NOVA-BOT?style=flat-square&color=22d3ee" alt="Stars"/>
   </a>
-  <a href="https://github.com/NOVA-X-PANEL/mirzabot/network/members">
-    <img src="https://img.shields.io/github/forks/NOVA-X-PANEL/mirzabot?style=flat-square" alt="Forks"/>
+  <a href="https://github.com/NOVA-X-PANEL/NOVA-BOT/network/members">
+    <img src="https://img.shields.io/github/forks/NOVA-X-PANEL/NOVA-BOT?style=flat-square&color=818cf8" alt="Forks"/>
   </a>
-  <a href="https://github.com/NOVA-X-PANEL/mirzabot/issues">
-    <img src="https://img.shields.io/github/issues/NOVA-X-PANEL/mirzabot?style=flat-square" alt="Issues"/>
+  <a href="https://github.com/NOVA-X-PANEL/NOVA-BOT/issues">
+    <img src="https://img.shields.io/github/issues/NOVA-X-PANEL/NOVA-BOT?style=flat-square" alt="Issues"/>
   </a>
-  <a href="https://github.com/NOVA-X-PANEL/mirzabot/blob/main/LICENSE">
-    <img src="https://img.shields.io/github/license/NOVA-X-PANEL/mirzabot?style=flat-square" alt="License"/>
+  <a href="https://github.com/NOVA-X-PANEL/NOVA-X-PANEL">
+    <img src="https://img.shields.io/badge/Powered%20By-NOVA--X--PANEL-22d3ee?style=flat-square" alt="NOVA-X-PANEL"/>
   </a>
   <img src="https://img.shields.io/badge/PHP-8.2-777BB4?style=flat-square&logo=php&logoColor=white" alt="PHP 8.2"/>
 </p>
@@ -36,272 +24,53 @@
 
 ---
 
-## 📚 Table of Contents
+## ✨ معرفی (Overview)
 
-- [✨ Overview](#-overview)
-- [📖 Documentation](#-documentation)
-- [🧩 Supported Panels](#-supported-panels)
-- [💳 Payment Gateways](#-payment-gateways)
-- [⚙️ Features](#️-features)
-- [🚀 Installation](#-installation)
-  - [Prerequisites](#prerequisites)
-  - [Install](#install)
-  - [Update](#update)
-  - [Remove](#remove)
-  - [Non-Interactive (CLI) Usage](#non-interactive-cli-usage)
-- [💎 Free vs. Pro](#-free-vs-pro)
-- [🌍 Languages](#-languages)
-- [💵 Support the Project](#-support-the-project)
-- [👥 Contributors](#-contributors)
+**NOVA Bot** ربات تلگرام مدرن، پرسرعت و کاملاً خودکار جهت فروش و مدیریت هوشمند کانفیگ‌ها و ساب‌اسکریپشن‌های شبکه **NOVA-X-PANEL** است.
+
+این ربات به صورت مستقیم به هسته پنل متصل شده و کلیه عملیات ساخت کانفیگ، مدیریت حجم و زمان، ارسال پیام‌های یادآوری، تمدید و اتصال به درگاه‌های پرداخت ریالی و ارزی را بدون دخالت دستی مدیریت می‌کند.
+
+### 🌟 ویژگی‌های کلیدی:
+- 📱 **مینی‌اپ اختصاصی تلگرام (Telegram Mini App):** فروشگاه مدرن با تم دارک سایبرپانک هماهنگ با پنل نوا.
+- 💻 **وب‌پنل اختصاصی مدیریت:** پنل وب سبک و ایمن جهت مدیریت کاربران، تراکنش‌ها، سرورها و پلن‌ها.
+- ⚡️ **معماری نیتیو و ایزوله:** اجرای مستقیم در کنار پنل با دیمن لانگ‌پولینگ اختصاصی `NOVA Poller`.
+- 💳 **انواع درگاه‌های پرداخت:** کارت به کارت خودکار، ووچر، درگاه‌های ریالی (زرین‌پال، آقای پرداخت و ...) و رمزارز (NowPayments، Plisio و ...).
+- 🔄 **پشتیبانی از انواع پروتکل‌ها:** Vless, Vmess, Trojan, Shadowsocks, WireGuard.
+- 🌐 **چندزبانه:** پشتیبانی کامل از زبان‌های فارسی، انگلیسی، روسی و چینی.
 
 ---
 
-## ✨ Overview
+## 🚀 نحوه نصب و راه‌اندازی (Installation)
 
-**Mirza Bot** is a feature-rich Telegram bot for selling VPN subscriptions and automating the entire sales workflow — from purchase and payment to config creation and service management.
+### ۱. نصب خودکار از طریق پنل اصلی NOVA-X-PANEL (روش پیشنهادی)
+ربات به صورت پیش‌فرض و به شکل کاملاً یکپارچه در منوی **«تلگرام شاپ نوا»** در پنل اصلی قرار دارد و با یک کلیک بدون نیاز به دستورات ترمینال نصب و فعال می‌شود.
 
-It connects directly to your panels, builds configurations automatically, accepts a wide range of payment methods, and gives both customers and admins a clean experience through a **Telegram Mini App** and a **web admin panel**.
-
-> Whether you're handing out trial accounts or running a large-scale reseller business, Mirza Bot has the tools to run it end to end.
-
----
-
-## 📖 Documentation
-
-The complete user manual lives at **[mirzabot.com/docs](https://mirzabot.com/docs/)** — 61 pages covering every part of the bot, written in **Persian (فارسی)**.
-
-It is not a feature list: every menu is documented with the exact order of the steps the bot asks for, what each field accepts, the error message you get when it rejects your input, and the mistake that most often breaks that feature.
-
-| Section | What it covers |
-|---------|----------------|
-| **شروع** (Getting started) | Architecture, requirements, server install, shared-host install, CLI flags, updating and removing |
-| **ساختار** (Structure) | Repository layout, database tables, which file does what |
-| **پنل‌ها** (Panels) | Adding each of the 13 panel types, protocol & inbound setup, per-panel menus, manual config creation, node management |
-| **فروشگاه** (Shop) | Products, categories, trial accounts, On-Hold services, bulk purchase, manual sale, renewals and location changes |
-| **پرداخت** (Payments) | Card-to-card with receipt approval, every online and crypto gateway, wallet and refunds |
-| **مدیریت** (Administration) | Admin roles, feature switches, report channel and topics, texts, forced-join channel, web panel |
-| **رشد و بازاریابی** (Growth) | Referrals, cashback, discount and gift codes, lottery and wheel, reseller system |
-| **نگهداری** (Operations) | Cron jobs, backup and restore, optimization, security checklist, troubleshooting |
-
-> The docs are generated from the bot's own source, so menu names, limits and error strings match the code rather than an older release.
-
----
-
-## 🧩 Supported Panels
-
-Mirza Bot integrates with the most popular VPN and network management panels:
-
-| Panel | Panel |
-|-------|-------|
-| 🟢 **Marzban** | 🟢 **Marzneshin** |
-| 🟢 **Sanaei / Alireza** |
-| 🟢 **S-UI** | 🟢 **Hiddify** |
-| 🟢 **WGDashboard** (WireGuard) | 🟢 **MikroTik** |
-| 🟢 **IBSng** | 🟢 **Pasarguard** |
-
-> Configs are generated automatically and are compatible with all common protocols.
-
----
-
-## 💳 Payment Gateways
-
-| Gateway | Type |
-|---------|------|
-| 💵 **Card-to-Card** | Manual (receipt + admin approval) |
-| 🪙 **NowPayments** | Crypto |
-| 🪙 **Plisio** | Crypto |
-| 🪙 **CubePay** | TRON / crypto |
-| 🇮🇷 **Zarinpal** | Online gateway |
-| 🇮🇷 **Aqayepardakht** | Online gateway |
-| 🇮🇷 **IranPay** | Online gateway |
-
----
-
-## ⚙️ Features
-
-### 🛒 Sales & Configuration
-- ✅ VPN purchase with **fully automated** config creation
-- ✅ Trial / test accounts for new users
-- ✅ Compatibility with all common protocols
-- ✅ QR codes for fast config import
-- ✅ Protocol-based configuration settings
-- ✅ Product, panel & gateway management
-
-### 👤 User Experience
-- ✅ **Telegram Mini App** for a modern, in-app interface
-- ✅ View & manage purchased services:
-  - Renew a service
-  - Buy additional volume
-  - Retrieve config / update subscription links
-- ✅ Wallet & balance system
-- ✅ Detailed purchase & trial reports
-- ✅ Support section, FAQ & customizable tutorials
-- ✅ Phone-number verification
-- ✅ Mandatory channel membership for purchases
-
-### 📈 Growth & Marketing
-- ✅ Affiliate / referral system
-- ✅ Cashback rewards
-- ✅ Discount codes
-- ✅ Gift codes
-- ✅ Lottery system
-- ✅ **Agent / reseller** system
-
-### 🛠️ Administration
-- ✅ **Web admin panel** (login-protected dashboard)
-- ✅ Multiple admins support
-- ✅ Balance & user management
-- ✅ Full text/message customization from the bot
-- ✅ Configurable username-generation methods
-- ✅ Automatic backups
-- ✅ Notification & expiry-reminder services (cron)
-- ✅ On-hold configurations
-
----
-
-## 🚀 Installation
-
-### Prerequisites
-
-| Requirement | Details |
-|-------------|---------|
-| 🖥️ **OS** | A **clean** Ubuntu **22.04** or **24.04** server |
-| 🌐 **Domain** | A domain name pointed to your server's IP |
-| ⚙️ **Stack** | PHP 8.2, Apache, MySQL, SSL — *installed automatically by the script* |
-
-> 💡 Start from a fresh server with no existing web server, database, or panel installed.
-
-### Install
-
-Run the following command on your server as **root**:
+### ۲. نصب دستی از طریق اسکریپت
+در صورتی که می‌خواهید ربات را روی سرور مجزا راه‌اندازی کنید:
 
 ```bash
-curl -o install.sh -L https://raw.githubusercontent.com/NOVA-X-PANEL/mirzabot/main/install.sh && bash install.sh
+curl -o install.sh -L https://raw.githubusercontent.com/NOVA-X-PANEL/NOVA-BOT/main/install.sh && bash install.sh
 ```
 
-An interactive menu will appear:
-
+گزینه‌های منوی نصب:
 ```
-1) Install Mirza
-2) Update Mirza
-3) Remove Mirza
-4) Migrate: Free → Pro (Beta)
-5) Renew SSL certificate
-6) Help & Parameters
-7) Exit
-```
-
-➡️ Select **`1`** to install the bot, then follow the prompts.
-
-### Update
-
-Run the same command and select **`2`**:
-
-```bash
-curl -o install.sh -L https://raw.githubusercontent.com/NOVA-X-PANEL/mirzabot/main/install.sh && bash install.sh
-```
-
-### Remove
-
-Run the same command and select **`3`** to completely remove the bot and its services.
-
-### Non-Interactive (CLI) Usage
-
-You can also drive the installer entirely from the command line — handy for automation and scripted deployments.
-
-**Commands**
-
-| Command | Description |
-|---------|-------------|
-| `install` | Install Mirza |
-| `update` | Update Mirza (choose channel / version) |
-| `remove` | Remove Mirza and its services |
-| `migrate` | Migrate Free → Pro |
-| `renew` | Renew the bot's SSL certificate |
-| `menu` | Open the interactive panel (default) |
-
-**Install parameters**
-
-| Parameter | Description |
-|-----------|-------------|
-| `--name` | Bot username |
-| `--token` | Telegram bot token |
-| `--admin` | Admin chat ID |
-| `--domain` | Domain name (e.g. `bot.example.com`) |
-| `--db-user` | Database username |
-| `--db-pass` | Database password |
-| `--version` | Specific release tag (e.g. `0.1.7`) |
-| `--channel` | `beta` · `release` · `auto` |
-| `-h`, `--help` | Show CLI help and exit |
-
-**Examples**
-
-```bash
-# Auto-pick the best channel
-mirza install --channel auto
-
-# Fully non-interactive install
-mirza install --name myvpnbot --token 123:ABC \
-              --admin 111 --domain bot.example.com --version 0.1.7
-
-# Update to a specific version or channel
-mirza update --version 0.1.6
-mirza update --channel release
-
-# Remove
-mirza remove
+1) Install NOVA Bot
+2) Update NOVA Bot
+3) Remove NOVA Bot
 ```
 
 ---
 
-## 💎 Free vs. Pro
+## 🛠️ ساختار و نیازمندی‌ها (Requirements)
 
-| | Free 🆓 | Pro 💎 |
-|---|:---:|:---:|
-| Automated VPN sales & config creation | ✅ | ✅ |
-| Trial accounts, wallet & service management | ✅ | ✅ |
-| All supported panels & payment gateways | ✅ | ✅ |
-| Advanced customization & analytics | — | ✅ |
-| Enhanced management & extra modules | — | ✅ |
-
-📌 **Pro purchase guide:** [View on Telegram »](https://t.me/mirzaperimium/4)
-
----
-
-## 🌍 Languages
-
-Mirza Bot ships with full translations for:
-
-🇬🇧 English · 🇮🇷 Persian (فارسی) · 🇷🇺 Russian (Русский) · 🇨🇳 Chinese (中文)
-
----
-
-## 💵 Support the Project
-
-If **Mirza Bot** helps your business, please consider supporting its development with a crypto donation:
-
-<a href="https://nowpayments.io/donation/mahdi">
-  <img src="https://img.shields.io/badge/Donate-NowPayments-1A1A2E?style=for-the-badge&logo=bitcoin&logoColor=white" alt="Donate"/>
-</a>
-
-Your support keeps the updates and improvements coming. Thank you! 🙌
-
----
-
-## 👥 Contributors
-
-Thanks to everyone who has contributed to making Mirza Bot better:
-
-<a href="https://github.com/NOVA-X-PANEL/mirzabot/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=NOVA-X-PANEL/mirzabot" alt="Contributors"/>
-</a>
+- **سیستم‌عامل:** Ubuntu 22.04 / 24.04 LTS
+- **پشته نرم‌افزاری:** PHP >= 8.2 (extensions: curl, mbstring, pdo_mysql, gd, zip), MySQL/MariaDB
+- **وب‌سرور:** Nginx یا Apache با پشتیبانی از URL Rewrite
 
 ---
 
 <div align="center">
 
-**Made with ❤️ by the Mirza Panel community**
-
-📖 [Documentation](https://mirzabot.com/docs/) · 💬 [Channel](https://t.me/mirzapanel) · 👥 [Group](https://t.me/mirzapanelgroup) · ⭐ [Star on GitHub](https://github.com/NOVA-X-PANEL/mirzabot)
+**توسعه‌یافته برای اکوسیستم اختصاصی [NOVA-X-PANEL](https://github.com/NOVA-X-PANEL/NOVA-X-PANEL)**
 
 </div>

@@ -170,7 +170,7 @@ _drule()  { printf "  ${C_BORDER}%s${CR}\n" "$(_repeat "━" "$UI_W")"; }
 banner()  {
     echo
     _drule
-    printf "  ${C_OK}▌${CR} ${C_TITLE}MIRZA${CR}  ${C_DIM}— VPN Subscription Management${CR}\n"
+    printf "  ${C_OK}▌${CR} ${C_TITLE}NOVA BOT${CR}  ${C_DIM}— Telegram Store & VPN Management${CR}\n"
     _drule
 }
 # Menu item row: [n] label  (left-aligned, no right border)
@@ -220,8 +220,8 @@ _link_mirza() {
 function self_update_script() {
     local MASTER_PATH="/root/install.sh"
     local BIN_LINK="/usr/local/bin/mirza"
-    local URL="https://raw.githubusercontent.com/NOVA-X-PANEL/mirzabot/main/install.sh"
-    local TEMP_FILE="/tmp/mirzabot_update.sh"
+    local URL="https://raw.githubusercontent.com/NOVA-X-PANEL/NOVA-BOT/main/install.sh"
+    local TEMP_FILE="/tmp/novabot_update.sh"
 
     # Make sure DNS works before reaching GitHub
     ensure_dns >/dev/null 2>&1
@@ -286,7 +286,7 @@ self_update_script "$@"
 # ── Repo / paths ─────────────────────────────────────────────
 BOT_DIR_DEFAULT="/var/www/html/mirzaprobotconfig"
 CONFIG_FILE_DEFAULT="$BOT_DIR_DEFAULT/config.php"
-GIT_REPO="NOVA-X-PANEL/mirzabot"
+GIT_REPO="NOVA-X-PANEL/NOVA-BOT"
 LATEST_CACHE="/tmp/.mirza_latest_version"
 IP_CACHE="/tmp/.mirza_server_ip"
 
@@ -915,8 +915,8 @@ version_section() {
     else
         _kv "Latest" "$(_dot warn) ${C_DIM}unknown (offline)${CR}"
     fi
-    _kv "Channel" "${C_DIM}t.me/mirzapanel${CR}"
-    _kv "Group" "${C_DIM}t.me/mirzapanelgroup${CR}"
+    _kv "Channel" "${C_DIM}NOVA-X-PANEL${CR}"
+    _kv "GitHub" "${C_DIM}github.com/NOVA-X-PANEL/NOVA-BOT${CR}"
 }
 
 bot_section() {
@@ -2720,7 +2720,7 @@ function migrate_to_pro() {
     NEW_BOT_DIR="/var/www/html/mirzaprobotconfig"
     rm -rf "$OLD_BOT_DIR"
     mkdir -p "$NEW_BOT_DIR"
-    ZIP_URL="https://github.com/NOVA-X-PANEL/mirzabot/archive/refs/heads/main.zip"
+    ZIP_URL="https://github.com/NOVA-X-PANEL/NOVA-BOT/archive/refs/heads/main.zip"
     TEMP_DIR="/tmp/mirzabot_mig"
     mkdir -p "$TEMP_DIR"
     run_step "Downloading Mirza source" "wget -q -O '$TEMP_DIR/bot.zip' '$ZIP_URL'" \

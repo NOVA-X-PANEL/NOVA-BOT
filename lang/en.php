@@ -2402,18 +2402,16 @@ Current amount: %s',
 ➖➖➖➖➖➖➖➖➖➖➖
 🔹 | Also, if you need <b>guidance</b> or help, you can contact the support team via direct message.
 
-📩 | To send a report, suggestion, or request for guidance, leave a message in the <b>Mirza group</b>:
-<a href="https://t.me/mirzapanelgroup" rel="nofollow" target="_blank">Mirza Group</a>',
-                        'aboutBot' => '💎 | Version Bot: %s
+📩 | Contact Technical Support:
+<b>NOVA Dedicated Support</b>',
+                        'aboutBot' => '💎 | Version Bot: %s (NOVA Edition)
 📌 | Version Mini App: 0.1.1
 
-<blockquote>🔹 | This bot is completely free and is developed by the Mirza team</blockquote>
+<blockquote>🚀 | This bot is an exclusive edition developed for the NOVA network.</blockquote>
 
-<blockquote>🔹 | Any sale or charging of money for this bot is considered a violation.</blockquote>
+<blockquote>⚡️ | Customized for intelligent management and automated distribution of NOVA-X services.</blockquote>
 
-<blockquote>🔹 | If you see any sale or charging of money, please track and reclaim your money.</blockquote>
-
-<blockquote>🐞 | If you encounter a bug or problem in the bot\'s operation, contact us via the **📬 Bot report** button in the admin panel.</blockquote>',
+<blockquote>🛡 | Backed by high-speed cloud infrastructure and NOVA tunnels.</blockquote>',
                         'gatewayRow' => '
 📌 Gateway name: <code>%s</code>
  - Number of successful payments: <code>%s</code>
@@ -4186,7 +4184,7 @@ We hope you had a good experience with the ease and speed of your service. If yo
                 'setEducationVariza' => 'Variza tutorial',
                 'zeroBalance' => '0️⃣ Reset balance to zero',
                 'panelSetting' => '🎛 Panel Settings',
-                'mirzaAgentPanel' => 'Mirza Agent',
+                'mirzaAgentPanel' => 'NOVA Agent',
                 'setGroupName' => '🎛 Set group name',
                 'subLinkDomain' => '🔗 Subscription link domain',
                 'panelTypeSanaei' => 'Sanaei single port',

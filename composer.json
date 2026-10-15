@@ -1,9 +1,9 @@
 {
-    "name": "mirzapro/mirzabot",
-    "description": "Mirza Bot - Telegram VPN sales and management bot",
+    "name": "nova/nova-bot",
+    "description": "NOVA Bot - Dedicated Telegram VPN sales and management bot for NOVA-X-PANEL",
     "type": "project",
     "license": "AGPL-3.0-or-later",
-    "homepage": "https://github.com/NOVA-X-PANEL/mirzabot",
+    "homepage": "https://github.com/NOVA-X-PANEL/NOVA-BOT",
     "require": {
         "php": ">=8.2",
         "endroid/qr-code": "^6.0",

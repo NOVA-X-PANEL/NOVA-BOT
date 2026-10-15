@@ -616,23 +616,39 @@ function generateUUID()
 
     return $uuid;
 }
-function rate_arze()
+function rate_arze($currencies = null)
 {
-    $ch = curl_init('https://demo.mirzabot.com/b.php');
+    $defaultRates = [
+        "USD" => 270000,
+        "Ton" => 360000,
+        "TRX" => 90000,
+        "TRX_M" => 90000
+    ];
+
+    $ch = curl_init('https://api.nobitex.ir/v2/orderbook/all');
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($ch, CURLOPT_TIMEOUT, 10);
-    curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
+    curl_setopt($ch, CURLOPT_TIMEOUT, 4);
+    curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 3);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
     $response = curl_exec($ch);
-    if ($response === false) {
-        error_log('rate_arze failed: ' . curl_error($ch));
-        return null;
+    if ($response) {
+        $data = json_decode($response, true);
+        if (is_array($data)) {
+            if (isset($data['usdt-rls']['lastTradePrice'])) {
+                $defaultRates['USD'] = intval($data['usdt-rls']['lastTradePrice']) / 10;
+            }
+            if (isset($data['trx-rls']['lastTradePrice'])) {
+                $defaultRates['TRX'] = intval($data['trx-rls']['lastTradePrice']) / 10;
+                $defaultRates['TRX_M'] = $defaultRates['TRX'];
+            }
+            if (isset($data['ton-rls']['lastTradePrice'])) {
+                $defaultRates['Ton'] = intval($data['ton-rls']['lastTradePrice']) / 10;
+            }
+            return $defaultRates;
+        }
     }
-    $decoded = json_decode($response, true);
-    if (!is_array($decoded) || !isset($decoded['result']) || !is_array($decoded['result'])) {
-        error_log('rate_arze: unexpected response');
-        return null;
-    }
-    return $decoded['result'];
+
+    return $defaultRates;
 }
 function updatePaymentMessageId($response, $orderId)
 {
@@ -2622,7 +2638,7 @@ function createPayVariza($price, $order_id)
         CURLOPT_POSTFIELDS => json_encode([
             'amount' => (int) $price,
             'return_url' => 'https://' . $domainhosts . '/payment/variza.php?order=' . $order_id,
-            'title' => 'Mirza order ' . $order_id,
+            'title' => 'NOVA order ' . $order_id,
             'expires_in' => '1h',
         ], JSON_UNESCAPED_UNICODE),
     ]);
@@ -2801,6 +2817,6 @@ function mirzaEnsureInstallerRemoved()
     }
 
     if (!mirzaRemoveInstallerPath($installerDirectory)) {
-        mirzaStopForInstaller('Mirza install folder still exists and could not be removed automatically; delete it manually to enable the bot.');
+        mirzaStopForInstaller('NOVA install folder still exists and could not be removed automatically; delete it manually to enable the bot.');
     }
 }
