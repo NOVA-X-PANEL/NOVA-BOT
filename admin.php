@@ -4971,14 +4971,21 @@ if ($datain == "settimecornremove" && $adminrulecheck['rule'] == "administrator"
     update("admin", "password", password_hash($randomString, PASSWORD_BCRYPT, ['cost' => 12]), "id_admin", $from_id);
     $dom = trim((string)$domainhosts);
     if ($dom !== '') {
-        $panelUrl = str_starts_with($dom, 'http') ? rtrim($dom, '/') . '/panel/' : 'https://' . rtrim($dom, '/') . '/panel/';
+        $cleanDom = rtrim(preg_replace('#^https?://#', '', $dom), '/');
+        if (str_ends_with($cleanDom, '/panel')) {
+            $panelUrl = 'https://' . $cleanDom . '/';
+        } elseif (str_contains($cleanDom, '/botpanel')) {
+            $panelUrl = 'https://' . $cleanDom . '/panel/';
+        } else {
+            $panelUrl = 'https://' . $cleanDom . '/botpanel/panel/';
+        }
     } else {
         $ch = curl_init('https://api.ipify.org');
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_TIMEOUT, 2);
         $ip = curl_exec($ch);
         $srvIp = ($ip && filter_var(trim($ip), FILTER_VALIDATE_IP)) ? trim($ip) : ($_SERVER['SERVER_ADDR'] ?? 'YOUR_SERVER_IP');
-        $panelUrl = "http://{$srvIp}:9099/panel/ (یا با دامنه اختصاصی تنظیم‌شده در پنل نوا)";
+        $panelUrl = "https://{$srvIp}:2053/botpanel/panel/";
     }
     sendmessage($from_id, sprintf($textbotlang['Admin']['webpanel']['activated'], $panelUrl, $from_id, $randomString), null, 'HTML');
 } elseif (preg_match('/addordermanualـ(\w+)/', $datain, $dataget) && $adminrulecheck['rule'] == "administrator") {

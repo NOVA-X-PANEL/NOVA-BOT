@@ -39,13 +39,13 @@ function db_count(PDO $pdo, string $sql, array $params = []): int
 }
 function panel_url(string $file = ''): string
 {
-    $uri = $_SERVER['REQUEST_URI'] ?? '/panel/';
-    $pos = strpos($uri, '/panel');
+    $uri = $_SERVER['REQUEST_URI'] ?? '/botpanel/panel/';
+    $pos = strrpos($uri, '/panel');
     if ($pos !== false) {
         $prefix = substr($uri, 0, $pos + 6);
         return rtrim($prefix, '/') . '/' . ltrim($file, '/');
     }
-    return '/panel/' . ltrim($file, '/');
+    return '/botpanel/panel/' . ltrim($file, '/');
 }
 
 function require_auth(): void
