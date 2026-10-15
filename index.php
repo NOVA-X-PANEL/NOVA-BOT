@@ -1,5 +1,6 @@
 <?php
 
+chdir(__DIR__);
 date_default_timezone_set('Asia/Tehran');
 ini_set('default_charset', 'UTF-8');
 ini_set('error_log', 'error_log');

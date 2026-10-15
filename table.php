@@ -17,6 +17,8 @@ if (intval($setting['Channel_Report'] ?? 0) != 0) {
 
 $webhookSecret = ensureWebhookSecret();
 
-telegram('setWebhook', [
-    'url' => "https://$domainhosts/index.php?secret={$webhookSecret['secret']}",
-]);
+if (!empty($domainhosts)) {
+    telegram('setWebhook', [
+        'url' => "https://$domainhosts/index.php?secret={$webhookSecret['secret']}",
+    ]);
+}
