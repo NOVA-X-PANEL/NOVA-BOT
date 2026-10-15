@@ -1788,10 +1788,6 @@ function ensureWebhookSecret()
         $secret = $stored;
     }
 
-    telegram('setWebhook', [
-        'url' => "https://$domainhosts/index.php?secret=$secret",
-    ]);
-
     return ['secret' => $secret, 'created' => true];
 }
 

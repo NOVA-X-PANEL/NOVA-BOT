@@ -58,8 +58,8 @@ while (true) {
 
     if (!isset($json['ok']) || !$json['ok'] || !isset($json['result']) || !is_array($json['result'])) {
         $desc = (string)($json['description'] ?? 'unknown error');
-        if (str_contains($desc, 'Conflict')) {
-            echo "[Mirza Poller] Webhook Conflict detected. Re-deleting webhook...\n";
+        if (stripos($desc, 'Conflict') !== false || stripos($desc, 'webhook') !== false) {
+            echo "[Mirza Poller] Webhook Conflict detected ({$desc}). Re-deleting webhook...\n";
             safeTelegramCurl("https://api.telegram.org/bot{$APIKEY}/deleteWebhook?drop_pending_updates=false", 15);
         }
         sleep(2);
