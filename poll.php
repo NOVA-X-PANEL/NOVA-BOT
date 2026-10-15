@@ -70,6 +70,10 @@ while (true) {
         $updateId = $item['update_id'];
         $offset = $updateId + 1;
 
+        $sender = $item['message']['from']['id'] ?? $item['callback_query']['from']['id'] ?? 'unknown';
+        $textMsg = $item['message']['text'] ?? $item['callback_query']['data'] ?? '';
+        echo "[Mirza Poller] Processing update #{$updateId} from {$sender}: {$textMsg}\n";
+
         $payload = json_encode($item, JSON_UNESCAPED_UNICODE);
         $descriptors = [
             0 => ['pipe', 'r'],

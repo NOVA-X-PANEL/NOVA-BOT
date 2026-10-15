@@ -151,6 +151,12 @@ CREATE TABLE `admin` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
+LOCK TABLES `admin` WRITE;
+/*!40000 ALTER TABLE `admin` DISABLE KEYS */;
+INSERT INTO `admin` (`id_admin`, `username`, `password`, `rule`) VALUES ('842798945', 'admin', '$2y$10$e6RQe0cAXWyTALkRkTFzbeoRPzAVbk7egfKtJL4dHi8CVOISF6hBW', 'administrator');
+/*!40000 ALTER TABLE `admin` ENABLE KEYS */;
+UNLOCK TABLES;
+
 --
 -- Table structure for table `affiliates`
 --
@@ -773,7 +779,7 @@ CREATE TABLE `setting` (
 LOCK TABLES `setting` WRITE;
 /*!40000 ALTER TABLE `setting` DISABLE KEYS */;
 INSERT INTO `setting` VALUES
-('botstatuson','rolleon','offAuthenticationphone','offAuthenticationiran','offnotuser','0','1','0','0','1','0','onnewuser','offcategory',NULL,'2','offinline','offverify',NULL,'offnamecustom','offcategorys','offpvsupport','0','onbulk','4','5','offverify','0','{\"one\":\"0\",\"tow\":\"0\",\"theree\":\"0\"}','0',NULL,'2','0','0','0','0','1','1','0','0','{\"keyboard\":[[{\"text\":\"text_sell\"},{\"text\":\"text_extend\"}],[{\"text\":\"text_usertest\"},{\"text\":\"text_wheel_luck\"}],[{\"text\":\"text_Purchased_services\"},{\"text\":\"accountwallet\"}],[{\"text\":\"text_affiliates\"},{\"text\":\"text_Tariff_list\"}],[{\"text\":\"text_support\"},{\"text\":\"text_help\"}],[{\"text\":\"text_agentpanel\"},{\"text\":\"text_requestagent\"}]]}','0','0','1','0','{\"day\":true,\"volume\":true,\"remove\":false,\"remove_volume\":false,\"test\":false,\"on_hold\":false,\"uptime_node\":false,\"uptime_panel\":false}',NULL,'{\"free\":100,\"all\":100}','f4e6962c2a3859831ceb295713ca6504c64a95a4be12864d','0','10000');
+('botstatuson','rolleoff','offAuthenticationphone','offAuthenticationiran','offnotuser','0','1','0','0','1','0','onnewuser','offcategory',NULL,'2','offinline','offverify',NULL,'offnamecustom','offcategorys','offpvsupport','0','onbulk','4','5','offverify','0','{\"one\":\"0\",\"tow\":\"0\",\"theree\":\"0\"}','0',NULL,'2','0','0','0','0','1','1','0','0','{\"keyboard\":[[{\"text\":\"text_sell\"},{\"text\":\"text_extend\"}],[{\"text\":\"text_usertest\"},{\"text\":\"text_wheel_luck\"}],[{\"text\":\"text_Purchased_services\"},{\"text\":\"accountwallet\"}],[{\"text\":\"text_affiliates\"},{\"text\":\"text_Tariff_list\"}],[{\"text\":\"text_support\"},{\"text\":\"text_help\"}],[{\"text\":\"text_agentpanel\"},{\"text\":\"text_requestagent\"}]]}','0','0','1','0','{\"day\":true,\"volume\":true,\"remove\":false,\"remove_volume\":false,\"test\":false,\"on_hold\":false,\"uptime_node\":false,\"uptime_panel\":false}',NULL,'{\"free\":100,\"all\":100}','f4e6962c2a3859831ceb295713ca6504c64a95a4be12864d','0','10000');
 /*!40000 ALTER TABLE `setting` ENABLE KEYS */;
 UNLOCK TABLES;
 
