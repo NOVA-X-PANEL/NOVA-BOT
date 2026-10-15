@@ -4972,6 +4972,22 @@ if ($datain == "settimecornremove" && $adminrulecheck['rule'] == "administrator"
     $dom = trim((string)$domainhosts);
     if ($dom !== '') {
         $cleanDom = rtrim(preg_replace('#^https?://#', '', $dom), '/');
+        if (!str_contains($cleanDom, ':')) {
+            $panelPort = '';
+            try {
+                if (file_exists('/etc/x-ui/x-ui.db')) {
+                    $xdb = new PDO('sqlite:/etc/x-ui/x-ui.db');
+                    $stmt = $xdb->query("SELECT value FROM settings WHERE key = 'webPort' LIMIT 1");
+                    if ($stmt) {
+                        $panelPort = trim((string)$stmt->fetchColumn());
+                    }
+                }
+            } catch (Exception $e) {}
+            if ($panelPort !== '' && $panelPort !== '443' && $panelPort !== '80') {
+                $parts = explode('/', $cleanDom, 2);
+                $cleanDom = $parts[0] . ':' . $panelPort . (isset($parts[1]) ? '/' . $parts[1] : '');
+            }
+        }
         if (str_ends_with($cleanDom, '/panel')) {
             $panelUrl = 'https://' . $cleanDom . '/';
         } elseif (str_contains($cleanDom, '/botpanel')) {
@@ -4985,7 +5001,18 @@ if ($datain == "settimecornremove" && $adminrulecheck['rule'] == "administrator"
         curl_setopt($ch, CURLOPT_TIMEOUT, 2);
         $ip = curl_exec($ch);
         $srvIp = ($ip && filter_var(trim($ip), FILTER_VALIDATE_IP)) ? trim($ip) : ($_SERVER['SERVER_ADDR'] ?? 'YOUR_SERVER_IP');
-        $panelUrl = "https://{$srvIp}:2053/botpanel/panel/";
+        $panelPort = '2053';
+        try {
+            if (file_exists('/etc/x-ui/x-ui.db')) {
+                $xdb = new PDO('sqlite:/etc/x-ui/x-ui.db');
+                $stmt = $xdb->query("SELECT value FROM settings WHERE key = 'webPort' LIMIT 1");
+                if ($stmt) {
+                    $val = trim((string)$stmt->fetchColumn());
+                    if ($val !== '') $panelPort = $val;
+                }
+            }
+        } catch (Exception $e) {}
+        $panelUrl = "https://{$srvIp}:{$panelPort}/botpanel/panel/";
     }
     sendmessage($from_id, sprintf($textbotlang['Admin']['webpanel']['activated'], $panelUrl, $from_id, $randomString), null, 'HTML');
 } elseif (preg_match('/addordermanualـ(\w+)/', $datain, $dataget) && $adminrulecheck['rule'] == "administrator") {
