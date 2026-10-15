@@ -6,9 +6,9 @@ $text_panel_admin_login_template = sprintf($textbotlang['Admin']['report']['abou
 
 if (!in_array($from_id, $admin_ids))
     return;
-$domainhostsEscaped = htmlspecialchars($domainhosts, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
-
-$miniAppInstructionText = sprintf($textbotlang['Admin']['webpanel']['miniAppHelp'], $domainhostsEscaped);
+$domainhostsEscaped = htmlspecialchars($domainhosts ?? '', ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
+$appDomain = $domainhostsEscaped !== '' ? $domainhostsEscaped : 'دامنه_شما (تنظیم‌شده در پنل)';
+$miniAppInstructionText = sprintf($textbotlang['Admin']['webpanel']['miniAppHelp'], $appDomain);
 
 $backmenu_panel_steps = [
     "GetNameNew", "GeturlNew", "GeturlNewx", "GetusernameNew", "GetpaawordNew", "getagentpanel",
@@ -4969,7 +4969,18 @@ if ($datain == "settimecornremove" && $adminrulecheck['rule'] == "administrator"
     $randomString = bin2hex(random_bytes(6));
     update("admin", "username", $from_id, "id_admin", $from_id);
     update("admin", "password", password_hash($randomString, PASSWORD_BCRYPT, ['cost' => 12]), "id_admin", $from_id);
-    sendmessage($from_id, sprintf($textbotlang['Admin']['webpanel']['activated'], $domainhosts, $from_id, $randomString), null, 'HTML');
+    $dom = trim((string)$domainhosts);
+    if ($dom !== '') {
+        $panelUrl = str_starts_with($dom, 'http') ? rtrim($dom, '/') . '/panel/' : 'https://' . rtrim($dom, '/') . '/panel/';
+    } else {
+        $ch = curl_init('https://api.ipify.org');
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 2);
+        $ip = curl_exec($ch);
+        $srvIp = ($ip && filter_var(trim($ip), FILTER_VALIDATE_IP)) ? trim($ip) : ($_SERVER['SERVER_ADDR'] ?? 'YOUR_SERVER_IP');
+        $panelUrl = "http://{$srvIp}:9099/panel/ (یا با دامنه اختصاصی تنظیم‌شده در پنل نوا)";
+    }
+    sendmessage($from_id, sprintf($textbotlang['Admin']['webpanel']['activated'], $panelUrl, $from_id, $randomString), null, 'HTML');
 } elseif (preg_match('/addordermanualـ(\w+)/', $datain, $dataget) && $adminrulecheck['rule'] == "administrator") {
     $iduser = $dataget[1];
     update("user", "Processing_value", $iduser, "id", $from_id);

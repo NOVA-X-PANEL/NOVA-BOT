@@ -4,7 +4,7 @@ require_once __DIR__ . '/inc/icons.php';
 session_start();
 
 if (!empty($_SESSION['admin_user'])) {
-  header('Location: index.php');
+  header('Location: ' . panel_url('index.php'));
   exit;
 }
 
@@ -45,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       $_SESSION['admin_user'] = $admin['username'];
       $_SESSION['login_time'] = time();
       flash('success', 'خوش آمدید، مدیر گرامی');
-      header('Location: index.php');
+      header('Location: ' . panel_url('index.php'));
       exit;
     } else {
       $error = 'اطلاعات ورود اشتباه است یا دسترسی مدیریت ندارید.';

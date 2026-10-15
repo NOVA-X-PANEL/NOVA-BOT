@@ -3530,11 +3530,11 @@ f,n.n2',
                         'activated' => '✅  پنل تحت وب شما با موفقیت فعال گردید.
 
 
-🔗آدرس ورود : https://%s/panel
-👤نام کاربری :  <code>%s</code>
-🔑رمز عبور :  <code>%s</code>
+🔗 آدرس ورود: %s
+👤 نام کاربری: <code>%s</code>
+🔑 رمز عبور: <code>%s</code>
 
-⚠️ در صورت کلیک مجدد دکمه فعالسازی پنل رمز جدید دریافت خواهید کرد.',
+⚠️ در صورت کلیک مجدد دکمه فعالسازی، رمز عبور جدید دریافت خواهید کرد.',
                         'miniAppHelp' => '📌 آموزش فعالسازی مینی اپ اختصاصی NOVA در BotFather
 
 /mybots > Select Bot > Bot Setting >  Configure Mini App > Enable Mini App  > Edit Mini App URL

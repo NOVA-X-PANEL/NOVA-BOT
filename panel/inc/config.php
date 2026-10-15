@@ -37,25 +37,36 @@ function db_count(PDO $pdo, string $sql, array $params = []): int
 {
     return (int) db_query($pdo, $sql, $params)->fetchColumn();
 }
+function panel_url(string $file = ''): string
+{
+    $uri = $_SERVER['REQUEST_URI'] ?? '/panel/';
+    $pos = strpos($uri, '/panel');
+    if ($pos !== false) {
+        $prefix = substr($uri, 0, $pos + 6);
+        return rtrim($prefix, '/') . '/' . ltrim($file, '/');
+    }
+    return '/panel/' . ltrim($file, '/');
+}
+
 function require_auth(): void
 {
     if (session_status() === PHP_SESSION_NONE)
         session_start();
     global $pdo;
     if (empty($_SESSION['admin_user'])) {
-        header('Location: login.php');
+        header('Location: ' . panel_url('login.php'));
         exit;
     }
     try {
         $admin = db_fetch($pdo, "SELECT id_admin, rule FROM admin WHERE username = ?", [$_SESSION['admin_user']]);
         if (!$admin || $admin['rule'] !== 'administrator') {
             session_destroy();
-            header('Location: login.php');
+            header('Location: ' . panel_url('login.php'));
             exit;
         }
     } catch (Exception $e) {
         session_destroy();
-        header('Location: login.php');
+        header('Location: ' . panel_url('login.php'));
         exit;
     }
 }
