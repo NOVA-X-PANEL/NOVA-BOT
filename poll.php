@@ -1,5 +1,5 @@
 <?php
-// Mirza Bot Long-Polling Worker for NOVA-X-PANEL
+// NOVA Bot Long-Polling Worker for NOVA-X-PANEL
 declare(strict_types=1);
 
 chdir(__DIR__);
@@ -12,7 +12,7 @@ require_once __DIR__ . '/botapi.php';
 global $APIKEY;
 
 if (empty($APIKEY) || $APIKEY === '{API_KEY}') {
-    fwrite(STDERR, "[Mirza Poller] APIKEY is not set in config.php. Exiting.\n");
+    fwrite(STDERR, "[NOVA Poller] APIKEY is not set in config.php. Exiting.\n");
     exit(1);
 }
 
@@ -31,7 +31,7 @@ function safeTelegramCurl(string $url, int $timeout = 20): ?array {
 
     if ($raw === false || empty($raw)) {
         if (!empty($err)) {
-            fwrite(STDERR, "[Mirza Poller cURL Error] {$err}\n");
+            fwrite(STDERR, "[NOVA Poller cURL Error] {$err}\n");
         }
         return null;
     }
@@ -39,10 +39,10 @@ function safeTelegramCurl(string $url, int $timeout = 20): ?array {
 }
 
 // Clear webhook so getUpdates receives incoming messages without 409 Conflict
-echo "[Mirza Poller] Clearing existing webhook...\n";
+echo "[NOVA Poller] Clearing existing webhook...\n";
 $delResp = safeTelegramCurl("https://api.telegram.org/bot{$APIKEY}/deleteWebhook?drop_pending_updates=false", 15);
-echo "[Mirza Poller] deleteWebhook result: " . json_encode($delResp) . "\n";
-echo "[Mirza Poller] Worker started. Listening for updates...\n";
+echo "[NOVA Poller] deleteWebhook result: " . json_encode($delResp) . "\n";
+echo "[NOVA Poller] Worker started. Listening for updates...\n";
 
 $phpBin = defined('PHP_BINARY') && !empty(PHP_BINARY) ? PHP_BINARY : '/usr/bin/php';
 $offset = 0;
@@ -59,7 +59,7 @@ while (true) {
     if (!isset($json['ok']) || !$json['ok'] || !isset($json['result']) || !is_array($json['result'])) {
         $desc = (string)($json['description'] ?? 'unknown error');
         if (stripos($desc, 'Conflict') !== false || stripos($desc, 'webhook') !== false) {
-            echo "[Mirza Poller] Webhook Conflict detected ({$desc}). Re-deleting webhook...\n";
+            echo "[NOVA Poller] Webhook Conflict detected ({$desc}). Re-deleting webhook...\n";
             safeTelegramCurl("https://api.telegram.org/bot{$APIKEY}/deleteWebhook?drop_pending_updates=false", 15);
         }
         sleep(2);
@@ -72,7 +72,7 @@ while (true) {
 
         $sender = $item['message']['from']['id'] ?? $item['callback_query']['from']['id'] ?? 'unknown';
         $textMsg = $item['message']['text'] ?? $item['callback_query']['data'] ?? '';
-        echo "[Mirza Poller] Processing update #{$updateId} from {$sender}: {$textMsg}\n";
+        echo "[NOVA Poller] Processing update #{$updateId} from {$sender}: {$textMsg}\n";
 
         $payload = json_encode($item, JSON_UNESCAPED_UNICODE);
         $descriptors = [
@@ -92,7 +92,7 @@ while (true) {
             proc_close($proc);
 
             if (!empty($err)) {
-                fwrite(STDERR, "[Mirza Handler Error] " . substr($err, 0, 500) . "\n");
+                fwrite(STDERR, "[NOVA Handler Error] " . substr($err, 0, 500) . "\n");
             }
         }
     }
