@@ -19,8 +19,10 @@ if (!checktelegramip())
     die("Unauthorized access");
 #-----------end telegram_ip_ranges------------#
 $webhookSecret = ensureWebhookSecret();
-if (!$webhookSecret['created'] && $webhookSecret['secret'] !== '' && !webhookSecretMatches($webhookSecret['secret']))
-    die("Unauthorized access");
+if (php_sapi_name() !== 'cli' && !defined('STDIN') && !in_array($_SERVER['REMOTE_ADDR'] ?? '', ['127.0.0.1', '::1'])) {
+    if (!$webhookSecret['created'] && $webhookSecret['secret'] !== '' && !webhookSecretMatches($webhookSecret['secret']))
+        die("Unauthorized access");
+}
 if ($is_bot)
     return;
 if (isset($update['chat_member'])) {

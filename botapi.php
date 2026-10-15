@@ -450,7 +450,11 @@ function isDuplicateUpdate($updateId)
     return false;
 }
 // #-----------------------------#
-$update = json_decode(file_get_contents("php://input"), true);
+$rawInput = file_get_contents("php://input");
+if (empty($rawInput) && (php_sapi_name() === 'cli' || defined('STDIN'))) {
+    $rawInput = file_get_contents("php://stdin");
+}
+$update = json_decode($rawInput, true);
 $update_id = $update['update_id'] ?? 0;
 if (isDuplicateUpdate($update_id)) {
     http_response_code(200);

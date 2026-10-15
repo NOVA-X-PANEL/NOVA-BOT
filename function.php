@@ -1717,6 +1717,9 @@ function addBackgroundImage($urlimage, $qrCodeResult, $backgroundPath)
 
 function checktelegramip()
 {
+    if (php_sapi_name() === 'cli' || defined('STDIN') || in_array($_SERVER['REMOTE_ADDR'] ?? '', ['127.0.0.1', '::1'])) {
+        return true;
+    }
     $forwarded = explode(',', $_SERVER['HTTP_X_FORWARDED_FOR'] ?? '')[0] ?? '';
     $clientIp = $_SERVER['HTTP_CF_CONNECTING_IP'] ?? $_SERVER['HTTP_X_REAL_IP'] ?? (trim($forwarded) ?: ($_SERVER['REMOTE_ADDR'] ?? ''));
     if (!is_string($clientIp) || $clientIp === '') {
