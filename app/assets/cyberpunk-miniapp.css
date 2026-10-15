@@ -1,0 +1,119 @@
+/* ==========================================================================
+   NOVA-X-PANEL — CYBERPUNK THEME FOR TELEGRAM MINI APP
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap');
+
+:root, .dark, html, body {
+  --background: #07090e !important;
+  --foreground: #f8fafc !important;
+  --card: rgba(16, 21, 36, 0.82) !important;
+  --card-foreground: #ffffff !important;
+  --popover: rgba(12, 16, 28, 0.95) !important;
+  --popover-foreground: #f8fafc !important;
+  --primary: #22d3ee !important;
+  --primary-foreground: #000000 !important;
+  --secondary: rgba(26, 35, 58, 0.8) !important;
+  --secondary-foreground: #f8fafc !important;
+  --muted: rgba(22, 30, 48, 0.8) !important;
+  --muted-foreground: #94a3b8 !important;
+  --accent: rgba(34, 211, 238, 0.15) !important;
+  --accent-foreground: #22d3ee !important;
+  --destructive: #f43f5e !important;
+  --border: rgba(99, 102, 241, 0.25) !important;
+  --input: rgba(14, 19, 34, 0.9) !important;
+  --ring: #22d3ee !important;
+  font-family: 'Vazirmatn', sans-serif !important;
+}
+
+body {
+  background-color: #07090e !important;
+  color: #f8fafc !important;
+  background-image: 
+    radial-gradient(circle at 20% 15%, rgba(6, 182, 212, 0.12) 0%, transparent 40%),
+    radial-gradient(circle at 80% 85%, rgba(139, 92, 246, 0.12) 0%, transparent 40%),
+    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px) !important;
+  background-size: 100% 100%, 100% 100%, 30px 30px, 30px 30px !important;
+}
+
+/* Base containers override */
+.bg-neutral-50,
+.dark\:bg-neutral-900,
+.bg-neutral-900,
+.bg-background,
+main {
+  background-color: transparent !important;
+}
+
+/* Glassmorphism Cards */
+.bg-card,
+[class*="rounded-xl"],
+[class*="rounded-2xl"],
+.border {
+  background-color: rgba(16, 21, 36, 0.82) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border-color: rgba(99, 102, 241, 0.28) !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45) !important;
+}
+
+/* Buttons — Neon Cyberpunk Gradient */
+button.bg-primary,
+button.bg-neutral-500,
+button[class*="bg-primary"],
+button[type="submit"],
+.bg-neutral-900 button {
+  background: linear-gradient(135deg, #06b6d4 0%, #8b5cf6 100%) !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  border: none !important;
+  box-shadow: 0 4px 18px rgba(6, 182, 212, 0.45) !important;
+  transition: all 0.25s ease !important;
+}
+
+button.bg-primary:hover,
+button.bg-neutral-500:hover {
+  box-shadow: 0 6px 24px rgba(6, 182, 212, 0.65), 0 0 15px rgba(139, 92, 246, 0.4) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* Bottom Navigation Bar */
+.fixed.bottom-6 > div,
+div[class*="bg-neutral-100 dark:bg-neutral-800"] {
+  background: rgba(10, 14, 25, 0.88) !important;
+  backdrop-filter: blur(24px) !important;
+  -webkit-backdrop-filter: blur(24px) !important;
+  border: 1px solid rgba(99, 102, 241, 0.35) !important;
+  border-radius: 24px !important;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(34, 211, 238, 0.15) !important;
+}
+
+/* Active or hovered tab in bottom nav */
+.fixed.bottom-6 button:hover,
+.fixed.bottom-6 button[class*="text-foreground"] {
+  color: #22d3ee !important;
+  text-shadow: 0 0 12px rgba(34, 211, 238, 0.6) !important;
+}
+
+/* Inputs & Form Elements */
+input, select, textarea {
+  background: rgba(11, 15, 27, 0.9) !important;
+  border: 1.5px solid rgba(99, 102, 241, 0.3) !important;
+  color: #ffffff !important;
+  border-radius: 12px !important;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: #22d3ee !important;
+  box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.2), 0 0 16px rgba(34, 211, 238, 0.3) !important;
+}
+
+/* Badges and text accents */
+h1, h2, h3 {
+  color: #ffffff !important;
+}
+
+.text-muted-foreground {
+  color: #94a3b8 !important;
+}

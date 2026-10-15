@@ -1,0 +1,423 @@
+/* ==========================================================================
+   NOVA-X-PANEL — NEON CYBERPUNK THEME FOR MIRZA WEB PANEL
+   Matches NOVA-X-PANEL Dark Cyberpunk Aesthetic & UI Design System
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+:root,
+html,
+body,
+[data-theme],
+[data-theme=navy],
+[data-theme=purple],
+[data-theme=slate],
+[data-theme=emerald],
+[data-theme=sunset],
+[data-theme=light],
+[data-theme=linen],
+[data-theme=mint],
+[data-theme=lavender] {
+  --font: 'Vazirmatn', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  --mono: 'JetBrains Mono', 'Fira Code', monospace !important;
+  
+  /* Cyberpunk Core Palette */
+  --bg: #07090e !important;
+  --sf: rgba(16, 21, 36, 0.78) !important;
+  --sf2: rgba(11, 15, 27, 0.88) !important;
+  --sf3: rgba(24, 32, 54, 0.92) !important;
+  --sfh: rgba(30, 41, 68, 0.95) !important;
+  
+  /* Cyberpunk Neon Borders */
+  --bd: rgba(99, 102, 241, 0.22) !important;
+  --bds: rgba(6, 182, 212, 0.45) !important;
+  --hl: rgba(30, 41, 59, 0.6) !important;
+  
+  /* Neon Accents */
+  --ac: #22d3ee !important;
+  --ach: #67e8f9 !important;
+  --acs: rgba(34, 211, 238, 0.16) !important;
+  --acg: rgba(34, 211, 238, 0.45) !important;
+  
+  --grad: linear-gradient(135deg, #06b6d4 0%, #8b5cf6 100%) !important;
+  --grad-subtle: linear-gradient(135deg, rgba(6, 182, 212, 0.15) 0%, rgba(139, 92, 246, 0.10) 100%) !important;
+  --grad-text: linear-gradient(135deg, #22d3ee 0%, #c084fc 100%) !important;
+  
+  /* Semantic Status Colors */
+  --ok: #10b981 !important;
+  --oks: rgba(16, 185, 129, 0.16) !important;
+  --no: #f43f5e !important;
+  --nos: rgba(244, 63, 94, 0.16) !important;
+  --warn: #fbbf24 !important;
+  --warns: rgba(251, 191, 36, 0.16) !important;
+  
+  /* Typography Colors */
+  --text: #ffffff !important;
+  --text2: #e2e8f0 !important;
+  --mute: #94a3b8 !important;
+  --dim: #64748b !important;
+  --fade: #334155 !important;
+  
+  --btn-ac-text: #ffffff !important;
+}
+
+html, body {
+  background: #07090e !important;
+  color: #e2e8f0 !important;
+  font-family: var(--font) !important;
+}
+
+/* Background Cyber Grid */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: 
+    radial-gradient(circle at 15% 15%, rgba(6, 182, 212, 0.08) 0%, transparent 45%),
+    radial-gradient(circle at 85% 85%, rgba(139, 92, 246, 0.09) 0%, transparent 45%),
+    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 36px 36px, 36px 36px;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Glassmorphism Cards & Containers */
+.card,
+.stat,
+.modal,
+.confirm-box,
+.auth-box {
+  background: rgba(16, 21, 36, 0.78) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border: 1px solid rgba(99, 102, 241, 0.24) !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.03) inset !important;
+  border-radius: 14px !important;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.card:hover,
+.stat:hover {
+  border-color: rgba(6, 182, 212, 0.45) !important;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.55), 0 0 20px rgba(6, 182, 212, 0.18) !important;
+}
+
+.card-head {
+  border-bottom: 1px solid rgba(99, 102, 241, 0.18) !important;
+  background: rgba(10, 14, 25, 0.4) !important;
+}
+
+/* Cyber Stat Cards */
+.stat::before {
+  content: "" !important;
+  position: absolute !important;
+  top: 0 !important;
+  right: 0 !important;
+  left: 0 !important;
+  height: 3px !important;
+  background: linear-gradient(90deg, #22d3ee, #8b5cf6) !important;
+  box-shadow: 0 0 12px rgba(34, 211, 238, 0.6) !important;
+  opacity: 0.9 !important;
+}
+
+.stat.ok::before {
+  background: linear-gradient(90deg, #10b981, #22d3ee) !important;
+  box-shadow: 0 0 12px rgba(16, 185, 129, 0.6) !important;
+}
+
+.stat.warn::before {
+  background: linear-gradient(90deg, #fbbf24, #f97316) !important;
+  box-shadow: 0 0 12px rgba(251, 191, 36, 0.6) !important;
+}
+
+.stat.no::before {
+  background: linear-gradient(90deg, #f43f5e, #ec4899) !important;
+  box-shadow: 0 0 12px rgba(244, 63, 94, 0.6) !important;
+}
+
+.stat-num {
+  font-weight: 800 !important;
+  background: linear-gradient(135deg, #ffffff 0%, #38bdf8 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  text-shadow: 0 0 24px rgba(56, 189, 248, 0.25) !important;
+}
+
+/* Sidebar Customization */
+.sidebar {
+  background: rgba(10, 14, 24, 0.92) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border-left: 1px solid rgba(99, 102, 241, 0.2) !important;
+}
+
+.sidebar-brand {
+  height: 68px !important;
+  border-bottom: 1px solid rgba(99, 102, 241, 0.2) !important;
+  background: rgba(7, 10, 18, 0.5) !important;
+}
+
+.brand-mark {
+  width: 38px !important;
+  height: 38px !important;
+  border-radius: 10px !important;
+  background: linear-gradient(135deg, #06b6d4 0%, #8b5cf6 100%) !important;
+  box-shadow: 0 0 20px rgba(6, 182, 212, 0.55), 0 0 35px rgba(139, 92, 246, 0.35) !important;
+  font-weight: 900 !important;
+  font-size: 17px !important;
+}
+
+.brand-name {
+  font-size: 1.05rem !important;
+  font-weight: 800 !important;
+  background: linear-gradient(135deg, #22d3ee 0%, #c084fc 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  letter-spacing: -0.02em !important;
+}
+
+.brand-name span {
+  display: block !important;
+  font-size: 0.72rem !important;
+  font-weight: 500 !important;
+  color: #94a3b8 !important;
+  -webkit-text-fill-color: #94a3b8 !important;
+  margin-top: 1px !important;
+}
+
+.nav-item {
+  color: #94a3b8 !important;
+  font-weight: 500 !important;
+  border-radius: 9px !important;
+  transition: all 0.2s ease !important;
+}
+
+.nav-item:hover {
+  background: rgba(34, 211, 238, 0.08) !important;
+  color: #ffffff !important;
+  transform: translateX(-3px) !important;
+}
+
+.nav-item.active {
+  background: linear-gradient(90deg, rgba(34, 211, 238, 0.16) 0%, rgba(139, 92, 246, 0.08) 100%) !important;
+  color: #22d3ee !important;
+  font-weight: 700 !important;
+  border: 1px solid rgba(34, 211, 238, 0.25) !important;
+}
+
+.nav-item.active::after {
+  background: linear-gradient(180deg, #22d3ee, #8b5cf6) !important;
+  box-shadow: 0 0 12px #22d3ee !important;
+  width: 4px !important;
+}
+
+.user-pill {
+  background: rgba(14, 19, 32, 0.75) !important;
+  border: 1px solid rgba(99, 102, 241, 0.2) !important;
+}
+
+.user-mono {
+  background: linear-gradient(135deg, #06b6d4 0%, #8b5cf6 100%) !important;
+  box-shadow: 0 0 14px rgba(6, 182, 212, 0.4) !important;
+}
+
+/* Topbar Customization */
+.topbar {
+  background: rgba(10, 14, 24, 0.85) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border-bottom: 1px solid rgba(99, 102, 241, 0.2) !important;
+}
+
+.topbar-title {
+  color: #ffffff !important;
+  font-weight: 800 !important;
+}
+
+.icon-btn {
+  background: rgba(16, 22, 38, 0.85) !important;
+  border: 1px solid rgba(99, 102, 241, 0.25) !important;
+  color: #94a3b8 !important;
+  border-radius: 9px !important;
+}
+
+.icon-btn:hover {
+  background: rgba(34, 211, 238, 0.15) !important;
+  border-color: #22d3ee !important;
+  color: #22d3ee !important;
+  box-shadow: 0 0 14px rgba(34, 211, 238, 0.3) !important;
+}
+
+/* Buttons — Cyberpunk Neon Style */
+.btn-primary {
+  background: linear-gradient(135deg, #06b6d4 0%, #8b5cf6 100%) !important;
+  border: none !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  box-shadow: 0 4px 20px rgba(6, 182, 212, 0.45) !important;
+  border-radius: 9px !important;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 28px rgba(6, 182, 212, 0.65), 0 0 15px rgba(139, 92, 246, 0.4) !important;
+}
+
+.btn-primary:active {
+  transform: scale(0.97) !important;
+}
+
+.btn-ghost {
+  background: rgba(16, 22, 38, 0.75) !important;
+  border: 1px solid rgba(99, 102, 241, 0.25) !important;
+  color: #cbd5e1 !important;
+}
+
+.btn-ghost:hover {
+  border-color: #22d3ee !important;
+  color: #22d3ee !important;
+  background: rgba(34, 211, 238, 0.1) !important;
+}
+
+/* Form Inputs */
+.input,
+.select,
+.textarea {
+  background: rgba(11, 15, 27, 0.88) !important;
+  border: 1.5px solid rgba(99, 102, 241, 0.25) !important;
+  color: #ffffff !important;
+  border-radius: 9px !important;
+  transition: all 0.2s ease !important;
+}
+
+.input:hover,
+.select:hover,
+.textarea:hover {
+  border-color: rgba(34, 211, 238, 0.4) !important;
+}
+
+.input:focus,
+.select:focus,
+.textarea:focus {
+  border-color: #22d3ee !important;
+  box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.2), 0 0 18px rgba(34, 211, 238, 0.25) !important;
+  background: rgba(13, 18, 32, 0.95) !important;
+}
+
+/* Tables */
+thead {
+  background: rgba(11, 15, 27, 0.7) !important;
+}
+
+th {
+  color: #94a3b8 !important;
+  border-bottom: 1px solid rgba(99, 102, 241, 0.2) !important;
+  font-weight: 700 !important;
+}
+
+td {
+  border-bottom: 1px solid rgba(99, 102, 241, 0.12) !important;
+  color: #cbd5e1 !important;
+}
+
+tbody tr:hover td {
+  background: rgba(34, 211, 238, 0.04) !important;
+}
+
+/* Tags and Badges */
+.tag {
+  border-radius: 20px !important;
+  font-weight: 700 !important;
+}
+
+.tag-ok {
+  background: rgba(16, 185, 129, 0.16) !important;
+  color: #34d399 !important;
+  border: 1px solid rgba(16, 185, 129, 0.35) !important;
+}
+
+.tag-info {
+  background: rgba(34, 211, 238, 0.16) !important;
+  color: #22d3ee !important;
+  border: 1px solid rgba(34, 211, 238, 0.35) !important;
+}
+
+.tag-no {
+  background: rgba(244, 63, 94, 0.16) !important;
+  color: #fb7185 !important;
+  border: 1px solid rgba(244, 63, 94, 0.35) !important;
+}
+
+.tag-warn {
+  background: rgba(251, 191, 36, 0.16) !important;
+  color: #fcd34d !important;
+  border: 1px solid rgba(251, 191, 36, 0.35) !important;
+}
+
+/* Login Page Specific Styling */
+.auth {
+  background: #07090e !important;
+}
+
+.auth-aside {
+  background: rgba(11, 15, 27, 0.7) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border-left: 1px solid rgba(99, 102, 241, 0.22) !important;
+}
+
+.auth-aside::before {
+  background: 
+    radial-gradient(ellipse 65% 55% at 30% 25%, rgba(6, 182, 212, 0.18) 0%, transparent 60%),
+    radial-gradient(ellipse 55% 45% at 70% 75%, rgba(139, 92, 246, 0.18) 0%, transparent 70%) !important;
+}
+
+.auth-mark .dot {
+  width: 48px !important;
+  height: 48px !important;
+  border-radius: 12px !important;
+  background: linear-gradient(135deg, #06b6d4 0%, #8b5cf6 100%) !important;
+  box-shadow: 0 0 28px rgba(6, 182, 212, 0.6), 0 0 45px rgba(139, 92, 246, 0.4) !important;
+}
+
+.auth-mark span {
+  font-weight: 800 !important;
+  background: linear-gradient(135deg, #22d3ee 0%, #c084fc 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  font-size: 1.35rem !important;
+}
+
+.auth-box {
+  border-radius: 18px !important;
+  padding: 36px 32px !important;
+}
+
+.auth-box h1 {
+  font-weight: 900 !important;
+  background: linear-gradient(135deg, #ffffff 0%, #38bdf8 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 7px !important;
+  height: 7px !important;
+}
+
+::-webkit-scrollbar-track {
+  background: #07090e !important;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(99, 102, 241, 0.35) !important;
+  border-radius: 99px !important;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #22d3ee !important;
+  box-shadow: 0 0 10px #22d3ee !important;
+}
