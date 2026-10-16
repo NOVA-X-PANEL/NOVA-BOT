@@ -1644,22 +1644,28 @@ elseif ($datain == "systemsms") {
     if (!isset($userdata['category']))
         $userdata['category'] = null;
     $limitip = isset($userdata['limitip']) ? intval($userdata['limitip']) : 0;
-    $stmt = $pdo->prepare("INSERT IGNORE INTO product (name_product,code_product,price_product,Volume_constraint,Service_time,Location,agent,data_limit_reset,note,category,hide_panel,one_buy_status,limitip) VALUES (:name_product,:code_product,:price_product,:Volume_constraint,:Service_time,:Location,:agent,:data_limit_reset,:note,:category,:hide_panel,'0',:limitip)");
-    $stmt->bindParam(':name_product', $userdata['name_product']);
-    $stmt->bindParam(':code_product', $randomString);
-    $stmt->bindParam(':price_product', $userdata['price_product']);
-    $stmt->bindParam(':Volume_constraint', $userdata['Volume_constraint']);
-    $stmt->bindParam(':Service_time', $userdata['Service_time']);
-    $stmt->bindParam(':Location', $userdata['Location']);
-    $stmt->bindParam(':agent', $userdata['agent']);
-    $stmt->bindParam(':data_limit_reset', $userdata['data_limit_reset']);
-    $stmt->bindParam(':category', $userdata['category'], PDO::PARAM_STR);
-    $stmt->bindParam(':note', $text, PDO::PARAM_STR);
-    $stmt->bindParam(':hide_panel', $varhide_panel, PDO::PARAM_STR);
-    $stmt->bindParam(':limitip', $limitip, PDO::PARAM_INT);
-    $stmt->execute();
-    sendmessage($from_id, $textbotlang['Admin']['Product']['saveProduct'], $shopkeyboard, 'HTML');
-    step('home', $from_id);
+    try {
+        $stmt = $pdo->prepare("INSERT IGNORE INTO product (name_product,code_product,price_product,Volume_constraint,Service_time,Location,agent,data_limit_reset,note,category,hide_panel,one_buy_status,limitip) VALUES (:name_product,:code_product,:price_product,:Volume_constraint,:Service_time,:Location,:agent,:data_limit_reset,:note,:category,:hide_panel,'0',:limitip)");
+        $stmt->bindParam(':name_product', $userdata['name_product']);
+        $stmt->bindParam(':code_product', $randomString);
+        $stmt->bindParam(':price_product', $userdata['price_product']);
+        $stmt->bindParam(':Volume_constraint', $userdata['Volume_constraint']);
+        $stmt->bindParam(':Service_time', $userdata['Service_time']);
+        $stmt->bindParam(':Location', $userdata['Location']);
+        $stmt->bindParam(':agent', $userdata['agent']);
+        $stmt->bindParam(':data_limit_reset', $userdata['data_limit_reset']);
+        $stmt->bindParam(':category', $userdata['category'], PDO::PARAM_STR);
+        $stmt->bindParam(':note', $text, PDO::PARAM_STR);
+        $stmt->bindParam(':hide_panel', $varhide_panel, PDO::PARAM_STR);
+        $stmt->bindParam(':limitip', $limitip, PDO::PARAM_INT);
+        $stmt->execute();
+        sendmessage($from_id, $textbotlang['Admin']['Product']['saveProduct'], $shopkeyboard, 'HTML');
+        step('home', $from_id);
+    } catch (Exception $e) {
+        error_log("Error saving product: " . $e->getMessage());
+        sendmessage($from_id, "❌ خطا در ثبت محصول در پایگاه داده:\n" . $e->getMessage(), $shopkeyboard, 'HTML');
+        step('home', $from_id);
+    }
 } elseif ($text == $textbotlang['keyboard']['adminSection'] && $adminrulecheck['rule'] == "administrator") {
     $list_admin = select("admin", "*", null, null, "fetchAll");
     $keyboardadmin = ['inline_keyboard' => []];

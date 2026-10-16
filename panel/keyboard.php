@@ -60,8 +60,8 @@ if ($method == "POST" && is_array($keyboard)) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><?= $textbotlang['panel']['keyboardManageTitle'] ?></title>
 
-    <script type="module" crossorigin src="js/sort_keyboard.js"></script>
-    <link rel="stylesheet" crossorigin href="css/sort_keyboard.css">
+    <script type="module" crossorigin src="js/sort_keyboard.js?v=2.7.6"></script>
+    <link rel="stylesheet" crossorigin href="css/sort_keyboard.css?v=2.7.6">
     <style>
         @import url(https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap);
 

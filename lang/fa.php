@@ -4171,7 +4171,7 @@ f,n.n2',
                 'mirzaAgentPanel' => 'نمایندگی NOVA',
                 'setGroupName' => '🎛 تنظیم نام گروه',
                 'subLinkDomain' => '🔗 دامنه لینک ساب',
-                'panelTypeSanaei' => '3x-ui',
+                'panelTypeSanaei' => 'nova',
                 'acceptRulesButton' => '✅ قوانین را می پذیرم',
         ],
         'panel' => [

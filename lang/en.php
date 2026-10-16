@@ -4187,7 +4187,7 @@ We hope you had a good experience with the ease and speed of your service. If yo
                 'mirzaAgentPanel' => 'NOVA Agent',
                 'setGroupName' => '🎛 Set group name',
                 'subLinkDomain' => '🔗 Subscription link domain',
-                'panelTypeSanaei' => 'Sanaei single port',
+                'panelTypeSanaei' => 'nova',
                 'acceptRulesButton' => '✅ I accept the rules',
         ],
         'panel' => [
