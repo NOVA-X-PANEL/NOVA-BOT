@@ -1639,11 +1639,25 @@ elseif ($datain == "systemsms") {
     step('endstep', $from_id);
 } elseif ($user['step'] == "endstep") {
     $userdata = json_decode($user['Processing_value'], true);
+    if (!is_array($userdata)) {
+        $userdata = [];
+    }
     $randomString = bin2hex(random_bytes(2));
     $varhide_panel = "{}";
     if (!isset($userdata['category']))
         $userdata['category'] = null;
     $limitip = isset($userdata['limitip']) ? intval($userdata['limitip']) : 0;
+    if (!isset($userdata['agent']) || $userdata['agent'] === '') $userdata['agent'] = 'f';
+    if (!isset($userdata['Location']) || $userdata['Location'] === '') $userdata['Location'] = '/all';
+    if (!isset($userdata['data_limit_reset']) || $userdata['data_limit_reset'] === '') $userdata['data_limit_reset'] = 'no_reset';
+    if (!isset($userdata['price_product'])) $userdata['price_product'] = '0';
+    if (!isset($userdata['Volume_constraint'])) $userdata['Volume_constraint'] = '0';
+    if (!isset($userdata['Service_time'])) $userdata['Service_time'] = '30';
+    if (!isset($userdata['name_product'])) $userdata['name_product'] = 'Product_' . $randomString;
+
+    $skipWord = $textbotlang['keyboard']['skip'] ?? 'رد شدن';
+    $cleanNote = ($text === 'رد شدن' || $text === $skipWord) ? '' : $text;
+
     try {
         $stmt = $pdo->prepare("INSERT IGNORE INTO product (name_product,code_product,price_product,Volume_constraint,Service_time,Location,agent,data_limit_reset,note,category,hide_panel,one_buy_status,limitip) VALUES (:name_product,:code_product,:price_product,:Volume_constraint,:Service_time,:Location,:agent,:data_limit_reset,:note,:category,:hide_panel,'0',:limitip)");
         $stmt->bindParam(':name_product', $userdata['name_product']);
@@ -1655,13 +1669,13 @@ elseif ($datain == "systemsms") {
         $stmt->bindParam(':agent', $userdata['agent']);
         $stmt->bindParam(':data_limit_reset', $userdata['data_limit_reset']);
         $stmt->bindParam(':category', $userdata['category'], PDO::PARAM_STR);
-        $stmt->bindParam(':note', $text, PDO::PARAM_STR);
+        $stmt->bindParam(':note', $cleanNote, PDO::PARAM_STR);
         $stmt->bindParam(':hide_panel', $varhide_panel, PDO::PARAM_STR);
         $stmt->bindParam(':limitip', $limitip, PDO::PARAM_INT);
         $stmt->execute();
         sendmessage($from_id, $textbotlang['Admin']['Product']['saveProduct'], $shopkeyboard, 'HTML');
         step('home', $from_id);
-    } catch (Exception $e) {
+    } catch (\Throwable $e) {
         error_log("Error saving product: " . $e->getMessage());
         sendmessage($from_id, "❌ خطا در ثبت محصول در پایگاه داده:\n" . $e->getMessage(), $shopkeyboard, 'HTML');
         step('home', $from_id);
