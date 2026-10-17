@@ -39,15 +39,8 @@ function db_count(PDO $pdo, string $sql, array $params = []): int
 }
 function panel_url(string $file = ''): string
 {
-    $prefix = $_SERVER['HTTP_X_FORWARDED_PREFIX'] ?? '';
-    if (!empty($prefix)) {
-        return rtrim($prefix, '/') . '/panel/' . ltrim($file, '/');
-    }
-    $uri = $_SERVER['REQUEST_URI'] ?? '';
-    if (str_contains($uri, '/botpanel')) {
-        return '/botpanel/panel/' . ltrim($file, '/');
-    }
-    return '/botpanel/panel/' . ltrim($file, '/');
+    $file = ltrim($file, '/');
+    return $file !== '' ? $file : 'index.php';
 }
 
 function require_auth(): void
